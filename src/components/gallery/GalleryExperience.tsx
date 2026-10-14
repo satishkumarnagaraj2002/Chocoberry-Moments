@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import { galleryCategories, galleryItems } from "@/data/gallery";
 
@@ -50,6 +50,7 @@ export function GalleryExperience() {
         <button className="lightbox-control" type="button" onClick={() => move(-1)} aria-label="Previous image"><ArrowLeft size={19} /></button>
         <div className="lightbox-image"><Image src={current.image} alt={current.alt} fill sizes="80vw" priority style={{ objectFit: "contain" }} /></div>
         <button className="lightbox-control" type="button" onClick={() => move(1)} aria-label="Next image"><ArrowRight size={19} /></button>
+        <a className="lightbox-control lightbox-download" href={`/api/gallery/${current.id}/download`} aria-label={`Download ${current.title}`} title="Download image"><Download size={19} /></a>
         <p className="lightbox-caption">{current.title} · {current.caption}</p>
       </motion.div>}
     </AnimatePresence>

@@ -6,6 +6,7 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/layout/Logo";
+import { PWAInstallButton } from "@/components/layout/PWAInstallButton";
 
 const links = [["Home", "/"], ["Experiences", "/experiences"], ["Occasions", "/occasions"], ["Gallery", "/gallery"], ["Our Story", "/about"]] as const;
 
@@ -37,6 +38,7 @@ export function Navbar() {
           <Logo />
           <nav className="nav-links" aria-label="Main navigation">
             {links.map(([label, href]) => <Link key={href} href={href} aria-current={pathname === href ? "page" : undefined}>{label}</Link>)}
+            <PWAInstallButton />
             <Link className="button nav-cta" href="/enquire">Plan your event <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </nav>
           <button className="menu-toggle" type="button" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} aria-controls="mobile-navigation" onClick={() => setMenuOpen((open) => !open)}>
@@ -50,6 +52,7 @@ export function Navbar() {
           <nav aria-label="Mobile navigation">
             {links.map(([label, href], index) => <motion.div key={href} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: index * .045 }}><Link href={href} aria-current={pathname === href ? "page" : undefined} onClick={() => setMenuOpen(false)}>{label}</Link></motion.div>)}
           </nav>
+          <PWAInstallButton />
           <Link className="button" href="/enquire" onClick={() => setMenuOpen(false)}>Plan your event <ArrowUpRight size={16} /></Link>
         </motion.div>}
       </AnimatePresence>

@@ -34,6 +34,8 @@ export const metadata: Metadata = {
     title: brand.seo.title,
     description: brand.seo.description,
   },
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, title: brand.name, statusBarStyle: "default" },
   icons: { icon: "/favicon.svg", apple: "/brand-mark.svg" },
 };
 
